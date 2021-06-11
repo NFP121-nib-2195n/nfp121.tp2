@@ -8,34 +8,46 @@ package question1;
  */
 public class FahrenheitCelsius {
 
-	/**
-	 * le point d'entrée de cette application, dont le commentaire est à
-	 * compléter
-	 * 
-	 * @param args
-	 *            ...
-	 */
-	public static void main(String[] args) {
-		// pour tous les paramètres de la ligne de commande
-		int fahrenheit = 0;
-		float celsius = 0;
-		System.out.println(fahrenheit + "\u00B0F -> " + celsius + "\u00B0C"); // ligne,
-																				// format
-																				// imposés
-																				
-	}
+    /**
+     * le point d'entrée de cette application, dont le commentaire est à
+     * compléter
+     * 
+     * @param args
+     *            ...
+     */
+    public static void main(String[] args) {
+        // pour tous les paramètres de la ligne de commande
+        int fahrenheit = 0;
+        float celsius = 0;
+        int i = 0;
 
-	/**
-	 * la méthode à compléter.
-	 * 
-	 * @param f
-	 *            la valeur en degré Fahrenheit
-	 * @return la conversion en degré Celsius
-	 */
-	public static float fahrenheitEnCelsius(int f) {
+        try{
+            while(i<args.length){
+                fahrenheit = Integer.parseInt(args[i]);
+                celsius = fahrenheitEnCelsius(fahrenheit);
+                System.out.println(fahrenheit + "\u00B0F -> " + celsius + "\u00B0C"); // ligne,
+                i++;
+            }
+        }
+        catch(NumberFormatException e){
+            System.out.println("error"+e.getMessage());
+        }
+        
+    }
 
-		return 0.F; // à compléter en remplaçant ce return 0.F par la fonction
-					// de conversion
-	}
+    /**
+     * la méthode à compléter.
+     * 
+     * @param f
+     *            la valeur en degré Fahrenheit
+     * @return la conversion en degré Celsius
+     */
+    public static float fahrenheitEnCelsius(int f) {
+        float div = 5.0F/9.0F;
+        float res = (float)(f-32)*div;
+        res = (int)(res*10)/10.0F;
+        return res; // à compléter en remplaçant ce return 0.F par la fonction
+                    // de conversion
+    }
 
 }

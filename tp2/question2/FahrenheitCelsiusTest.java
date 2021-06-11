@@ -1,4 +1,6 @@
 package question2;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 
 /**
@@ -32,7 +34,9 @@ public class FahrenheitCelsiusTest extends junit.framework.TestCase
     // à l'aide du menu contextuel "Présentoir --> Engagements".
     // Notez cependant que ce dernier ne peut saisir les objets primitifs
     // du présentoir (les objets sans constructeur, comme int, float, etc.).
-
+    private final PrintStream standardOut = System.out;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+    
     /**
      * Constructeur de la classe-test FahrenheitCelsiusTest
      */
@@ -48,7 +52,7 @@ public class FahrenheitCelsiusTest extends junit.framework.TestCase
     protected void setUp() // throws java.lang.Exception
     {
         // Initialisez ici vos engagements
-
+        System.setOut(new PrintStream(outputStreamCaptor));
     }
 
     /**
@@ -59,6 +63,7 @@ public class FahrenheitCelsiusTest extends junit.framework.TestCase
     protected void tearDown() // throws java.lang.Exception
     {
         //Libérez ici les ressources engagées par setUp()
+        System.setOut(standardOut);
     }
 
     /**
@@ -69,4 +74,18 @@ public class FahrenheitCelsiusTest extends junit.framework.TestCase
      * Vous pouvez ébaucher le corps grâce au menu contextuel "Enregistrer une méthode de test".
      */
 
+
+    public void test1()
+    {
+        assertEquals(-17.7, question2.FahrenheitCelsius.fahrenheitEnCelsius(0), 0.1);
+    }
+    
+    public void testException()
+    {
+        question2.FahrenheitCelsius.main(new String[]{"zzz"});
+        assertEquals("error : For input string: \"zzz\"",outputStreamCaptor.toString().trim());
+    }
 }
+
+
+
