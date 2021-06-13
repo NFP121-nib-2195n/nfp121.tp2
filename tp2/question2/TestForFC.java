@@ -52,7 +52,7 @@ public class TestForFC
     @Test
     public void test_exception_NAN()
     {
-        question2.FahrenheitCelsius.main(new String[]{"11","jessi"});
+        question2.FahrenheitCelsius.main(new String[]{"jessi"});
         assertEquals("error : For input string: \"jessi\"",outputStreamCaptor.toString().trim());
     }
 }
