@@ -2,15 +2,15 @@ package question2;
 
 
 /**
- * Décrivez votre classe FahrenheitCelsius ici.
+ * DÃ©crivez votre classe FahrenheitCelsius ici.
  * 
  * @author (votre nom) 
- * @version (un numéro de version ou une date)
+ * @version (un numÃ©ro de version ou une date)
  */
 public class FahrenheitCelsius{
 
-     /** le point d'entrée de cette application, 
-      * dont le commentaire est à compléter
+     /** le point d'entrÃ©e de cette application, 
+      * dont le commentaire est Ã  complÃ©ter
       *
       *  @param args ...
       */
@@ -18,29 +18,29 @@ public class FahrenheitCelsius{
         int fahrenheit = 0;
         float celsius = 0;
         int i = 0;
-        String res = "";
-        try{
-            
-           while(i<args.length){
+         
+        while(i<args.length){
+            try{
                 fahrenheit = Integer.parseInt(args[i]);
                 celsius = fahrenheitEnCelsius(fahrenheit);
-                res = (fahrenheit + "\u00B0F -> " + celsius + "\u00B0C"); // ligne,
-                i++;
+                System.out.println(fahrenheit + "\u00B0F -> " + celsius + "\u00B0C"); // ligne,
+
             }
-      
-            System.out.println(res);
+            catch(NumberFormatException nfe){
+               System.out.println("error : " + nfe.getMessage());  // en cas d'erreur 
+            }
             
-        }catch(NumberFormatException nfe){
-           System.out.println("error : " + nfe.getMessage());  // en cas d'erreur 
+            i++;
         }
+      
         
        
      }
      
      /** 
-      * la méthode à compléter. 
-      *   @param f la valeur en degré Fahrenheit
-      *   @return  la conversion en degré Celsius
+      * la mÃ©thode Ã  complÃ©ter. 
+      *   @param f la valeur en degrÃ© Fahrenheit
+      *   @return  la conversion en degrÃ© Celsius
       */
      public static float fahrenheitEnCelsius( int f){
         float div = 5.0F/9.0F;
